@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blannq - Premium Safety Helmet X500</title>
+    <style>
+        :root {
+            --primary-color: #0047AB; /* Rich blue */
+            --primary-dark: #003380;
+            --secondary-color: #FFD700; /* Yellow */
+            --secondary-dark: #E6C200;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333;
+            --white: #fff;
+            --medium-gray: #e0e0e0;
+            --success-color: #28a745;
+            --error-color: #dc3545;
+            --warning-color: #fd7e14;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--light-gray);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .logo-text span {
+            color: var(--secondary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        nav ul li a.active {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .cta-button {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 120px 0 20px;
+            background-color: var(--white);
+        }
+
+        .breadcrumb-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .breadcrumb-item {
+            display: inline-block;
+            font-size: 14px;
+            color: var(--dark-gray);
+        }
+
+        .breadcrumb-item a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .breadcrumb-item a:hover {
+            color: var(--primary-dark);
+        }
+
+        .breadcrumb-separator {
+            margin: 0 10px;
+            color: var(--medium-gray);
+        }
+
+        /* Product Section */
+        .product-section {
+            padding: 40px 0 80px;
+            background-color: var(--white);
+        }
+
+        .product-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        /* Product Gallery */
+        .product-gallery {
+            position: relative;
+        }
+
+        .main-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .main-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: all 0.5s ease;
+        }
+
+        .thumbnail-container {
+            display: flex;
+            gap: 15px;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            border-radius: 5px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .thumbnail.active {
+            border-color: var(--primary-color);
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-label {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: var(--secondary-color);
+            color: var(--dark-gray);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Product Info */
+        .product-info h1 {
+            font-size: 32px;
+            color: var(--dark-gray);
+            margin-bottom: 15px;
+        }
+
+        .product-code {
+            color: var(--medium-gray);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .rating-stars {
+            color: var(--secondary-color);
+            font-size: 18px;
+            margin-right: 10px;
+        }
+
+        .rating-count {
+            color: var(--medium-gray);
+            font-size: 14px;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .current-price {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-right: 15px;
+        }
+
+        .old-price {
+            font-size: 18px;
+            color: var(--medium-gray);
+            text-decoration: line-through;
+        }
+
+        .price-savings {
+            background-color: rgba(40, 167, 69, 0.1);
+            color: var(--success-color);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .product-description {
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+
+        .product-features {
+            margin-bottom: 30px;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            color: var(--success-color);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .product-variants {
+            margin-bottom: 30px;
+        }
+
+        .variant-label {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .color-options {
+            display: flex;
+            gap: 10px;
+        }
+
+        .color-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid var(--white);
+            box-shadow: 0 0 0 1px var(--medium-gray);
+            transition: all 0.3s ease;
+        }
+
+        .color-option.active {
+            box-shadow: 0 0 0 2px var(--primary-color);
+        }
+
+        .color-red {
+            background-color: #e74c3c;
+        }
+
+        .color-blue {
+            background-color: #3498db;
+        }
+
+        .color-yellow {
+            background-color: #f1c40f;
+        }
+
+        .color-black {
+            background-color: #2c3e50;
+        }
+
+        .color-white {
+            background-color: #ecf0f1;
+        }
+
+        .product-quantity {
+            margin-bottom: 30px;
+        }
+
+        .quantity-input {
+            display: flex;
+            align-items: center;
+            max-width: 150px;
+        }
+
+        .quantity-btn {
+            width: 40px;
+            height: 40px;
+            background-color: var(--light-gray);
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quantity-btn:hover {
+            background-color: var(--medium-gray);
+        }
+
+        .quantity-btn.minus {
+            border-radius: 4px 0 0 4px;
+        }
+
+        .quantity-btn.plus {
+            border-radius: 0 4px 4px 0;
+        }
+
+        .quantity-value {
+            width: 70px;
+            height: 40px;
+            text-align: center;
+            border: 1px solid var(--medium-gray);
+            border-left: none;
+            border-right: none;
+            font-size: 16px;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .add-to-cart-btn {
+            flex: 1;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            padding: 12px 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .wishlist-btn {
+            width: 50px;
+            height: 50px;
+            background-color: var(--light-gray);
+            border: none;
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .wishlist-btn:hover {
+            background-color: var(--medium-gray);
+        }
+
+        .stock-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 10px 15px;
+            background-color: rgba(40, 167, 69, 0.1);
+            border-radius: 4px;
+        }
+
+        .stock-icon {
+            color: var(--success-color);
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        .stock-text {
+            color: var(--success-color);
+            font-weight: 600;
+        }
+
+        .delivery-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 15px;
+        }
+
+        .delivery-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+            color: var(--dark-gray);
+        }
+
+        .delivery-icon {
+            color: var(--primary-color);
+            font-size: 16px;
+        }
+
+        .certifications {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .cert-icon {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            opacity: 0.7;
+        }
+
+        /* Product Tabs */
+        .product-tabs {
+            margin-top: 80px;
+        }
+
+        .tabs-header {
+            display: flex;
+            border-bottom: 1px solid var(--medium-gray);
+            margin-bottom: 30px;
+        }
+
+        .tab-btn {
+            padding: 15px 25px;
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark-gray);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .specs-table tr:nth-child(odd) {
+            background-color: var(--light-gray);
+        }
+
+        .specs-table th, .specs-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        .specs-table th {
+            width: 30%;
+            font-weight: 600;
+        }
+
+        /* Reviews */
+        .review-summary {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        .average-rating {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .rating-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--dark-gray);
+            line-height: 1;
+        }
+
+        .total-reviews {
+            color: var(--medium-gray);
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .rating-breakdown {
+            flex: 1;
+            margin-left: 40px;
+        }
+
+        .rating-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .star-label {
+            min-width: 60px;
+            font-size: 14px;
+        }
+
+        .rating-bar-container {
+            flex: 1;
+            height: 8px;
+            background-color: var(--light-gray);
+            border-radius: 4px;
+            margin: 0 15px;
+            overflow: hidden;
+        }
+
+        .rating-bar {
+            height: 100%;
+            background-color: var(--secondary-color);
+        }
+
+        .rating-count {
+            min-width: 40px;
+            font-size: 14px;
+            color: var(--medium-gray);
+            text-align: right;
+        }
+
+        .review-list {
+            margin-bottom: 40px;
+        }
+
+        .review-item {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .reviewer-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-right: 15px;
+        }
+
+        .reviewer-name {
+            font-weight: 600;
+        }
+
+        .review-date {
+            color: var(--medium-gray);
+            font-size: 14px;
+        }
+
+        .review-rating {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .review-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .review-content {
+            margin-bottom: 15px;
+        }
+
+        .review-photos {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .review-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .review-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Related Products */
+        .related-products {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 32px;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+
+        .product-card:hover .product-card-image img {
+            transform: scale(1.1);
+        }
+
+        .product-card-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .product-card-content {
+            padding: 20px;
+        }
+
+        .product-card-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark-gray);
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .product-card-title:hover {
+            color: var(--primary-color);
+        }
+
+        .product-card-rating {
+            color: var(--secondary-color);
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .product-card-price {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .product-card-current-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-right: 10px;
+        }
+
+        .product-card-old-price {
+            font-size: 14px;
+            color: var(--medium-gray);
+            text-decoration: line-through;
+        }
+
+        .product-card-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .quick-add-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quick-add-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .quick-view-btn {
+            color: var(--primary-color);
+            background: none;
+            border: none;
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quick-view-btn:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            opacity: 1;
+            color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            text-align: center;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .product-container {
+                grid-template-columns: 1fr;
+            }
+
+            .product-info {
+                padding-top: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo {
+                margin-bottom: 15px;
+                justify-content: center;
+            }
+
+            nav ul {
+                justify-content: center;
+                margin-top: 15px;
+            }
+
+            nav ul li {
+                margin: 0 10px;
+            }
+
+            .tabs-header {
+                overflow-x: auto;
+                white-space: nowrap;
+                padding-bottom: 10px;
+            }
+
+            .review-summary {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .average-rating {
+                margin-bottom: 20px;
+            }
+
+            .rating-breakdown {
+                margin-left: 0;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .product-actions {
+                flex-direction: column;
+            }
+
+            .delivery-info {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <!-- Logo placeholder -->
+                    <div class="logo-text">Blann<span>Q</span></div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="Products.html">Products</a></li>
+                        <li><a href="Contact.html">Contact Us</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-container">
+                <span class="breadcrumb-item"><a href="index.html">Home</a></span>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-item"><a href="products.html">Products</a></span>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-item"><a href="products.html#head">Head Protection</a></span>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-item">Premium Safety Helmet X500</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Section -->
+    <section class="product-section">
+        <div class="container">
+            <div class="product-container">
+                <!-- Product Gallery -->
+                <div class="product-gallery">
+                    <div class="product-label">BESTSELLER</div>
+                    <div class="main-image">
+                        <img src="Head Protection.jpg" alt="Premium Safety Helmet X500" id="main-product-image">
+                    </div>
+                    <div class="thumbnail-container">
+                        <div class="thumbnail active">
+                            <img src="Head Protection1.jpg" alt="Safety Helmet Thumbnail 1">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="Head Protection2.jpg" alt="Safety Helmet Thumbnail 2">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="Head Protection3.jpg" alt="Safety Helmet Thumbnail 3">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="Head Protection1.jpg" alt="Safety Helmet Thumbnail 4">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div class="product-info">
+                    <h1>Premium Safety Helmet X500</h1>
+                    <div class="product-code">SKU: HS-X500-BLU</div>
+                    
+                    <div class="product-rating">
+                        <div class="rating-stars">★★★★★</div>
+                        <div class="rating-count">(127 reviews)</div>
+                    </div>
+                    
+                    <div class="product-price">
+                        <div class="current-price">R899.99</div>
+                        <div class="old-price">R1,099.99</div>
+                        <div class="price-savings">Save 18%</div>
+                    </div>
+                    
+                    <div class="stock-info">
+                        <span class="stock-icon">✓</span>
+                        <span class="stock-text">In Stock - Ships within 24 hours</span>
+                    </div>
+                    
+                    <div class="product-description">
+                        <p>The X500 Premium Safety Helmet provides superior head protection for industrial environments. Engineered with high-impact resistant materials and featuring an advanced suspension system, this helmet exceeds SANS 1397 safety standards for optimal workplace safety.</p>
+                    </div>
+                    
+                    <div class="product-features">
+                        <h3>Key Features:</h3>
+                        <ul class="feature-list">
+                            <li>High-density polyethylene shell for maximum impact resistance</li>
+                            <li>6-point suspension system for optimal weight distribution</li>
+                            <li>Adjustable ratchet headband for custom fit</li>
+                            <li>Ventilated design for all-day comfort</li>
+                            <li>Chin strap included for secure positioning</li>
+                            <li>Compatible with face shields and earmuffs</li>
+                            <li>UV-resistant material extends product lifespan</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="product-variants">
+                        <div class="variant-label">Color:</div>
+                        <div class="color-options">
+                            <div class="color-option color-blue active" title="Blue"></div>
+                            <div class="color-option color-red" title="Red"></div>
+                            <div class="color-option color-yellow" title="Yellow"></div>
+                            <div class="color-option color-white" title="White"></div>
+                            <div class="color-option color-black" title="Black"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-quantity">
+                        <div class="variant-label">Quantity:</div>
+                        <div class="quantity-input">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" value="1" min="1" class="quantity-value">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                </svg>
+                                Add to Cart
+                            </button>
+                            <button class="wishlist-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <div class="delivery-info">
+                            <div class="delivery-item">
+                                <div class="delivery-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5v-7zm1.294 7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456zM12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12v4zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                                    </svg>
+                                </div>
+                                Free shipping nationwide
+                            </div>
+                            <div class="delivery-item">
+                                <div class="delivery-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+                                    </svg>
+                                </div>
+                                Next-day delivery available
+                            </div>
+                            <div class="delivery-item">
+                                <div class="delivery-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+                                        <path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
+                                    </svg>
+                                </div>
+                                30-day returns policy
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Product Tabs -->
+                <div class="product-tabs">
+                    <div class="tabs-header">
+                        <button class="tab-btn active" data-tab="description">Description</button>
+                        <button class="tab-btn" data-tab="specifications">Specifications</button>
+                        <button class="tab-btn" data-tab="reviews">Reviews (127)</button>
+                        <button class="tab-btn" data-tab="faq">FAQ</button>
+                    </div>
+    
+                    <div class="tab-content active" id="description-tab">
+                        <h3>Product Description</h3>
+                        <p>The Premium Safety Helmet X500 is engineered for professionals who demand the highest level of head protection in industrial environments. This premium-grade helmet exceeds all South African safety standards and has been rigorously tested to provide optimal protection against impacts, falling objects, and electrical hazards.</p>
+                        
+                        <p>The X500 features a high-density polyethylene shell that provides superior impact resistance while maintaining a lightweight design for all-day comfort. The innovative 6-point suspension system distributes weight evenly across the head, reducing pressure points and fatigue during extended wear.</p>
+                        
+                        <p>Designed with user comfort in mind, the X500 includes a ratchet adjustment system that allows for a quick and secure custom fit. The strategic ventilation openings provide excellent airflow, keeping workers cool even in the hottest conditions without compromising safety.</p>
+                        
+                        <p>The helmet's shell is UV-stabilized to prevent degradation from sun exposure, ensuring a longer lifespan even in harsh outdoor environments. The X500 is also compatible with a wide range of accessories including face shields, earmuffs, and attachable lights, making it a versatile choice for various industries.</p>
+                        
+                        <p>Blannq stands behind the quality of the X500 with a 2-year warranty against defects in materials and workmanship. Choose the X500 for uncompromising safety and comfort that professionals trust.</p>
+                    </div>
+    
+                    <div class="tab-content" id="specifications-tab">
+                        <h3>Technical Specifications</h3>
+                        <table class="specs-table">
+                            <tr>
+                                <th>Material</th>
+                                <td>High-density polyethylene (HDPE)</td>
+                            </tr>
+                            <tr>
+                                <th>Weight</th>
+                                <td>385g</td>
+                            </tr>
+                            <tr>
+                                <th>Standards</th>
+                                <td>SANS 1397, EN 397, ANSI Z89.1 Type I, Class E</td>
+                            </tr>
+                            <tr>
+                                <th>Impact Protection</th>
+                                <td>Top, lateral, and rear impact protection</td>
+                            </tr>
+                            <tr>
+                                <th>Suspension System</th>
+                                <td>6-point with textile straps</td>
+                            </tr>
+                            <tr>
+                                <th>Adjustment</th>
+                                <td>Ratchet system (52-64cm head circumference)</td>
+                            </tr>
+                            <tr>
+                                <th>Temperature Range</th>
+                                <td>-30°C to +50°C</td>
+                            </tr>
+                            <tr>
+                                <th>Electrical Insulation</th>
+                                <td>Up to 1000V a.c. (Class E)</td>
+                            </tr>
+                            <tr>
+                                <th>Chinstrap</th>
+                                <td>Included, 4-point attachment</td>
+                            </tr>
+                            <tr>
+                                <th>Accessories Compatibility</th>
+                                <td>30mm slots for face shields, earmuffs, and lamps</td>
+                            </tr>
+                            <tr>
+                                <th>Warranty</th>
+                                <td>2 years</td>
+                            </tr>
+                            <tr>
+                                <th>Service Life</th>
+                                <td>5 years (subject to inspection)</td>
+                            </tr>
+                        </table>
+                    </div>
+    
+                    <div class="tab-content" id="reviews-tab">
+                        <div class="review-summary">
+                            <div class="average-rating">
+                                <div class="rating-number">4.8</div>
+                                <div class="rating-stars">★★★★★</div>
+                                <div class="total-reviews">Based on 127 reviews</div>
+                            </div>
+                            <div class="rating-breakdown">
+                                <div class="rating-row">
+                                    <div class="star-label">5 Stars</div>
+                                    <div class="rating-bar-container">
+                                        <div class="rating-bar" style="width: 85%;"></div>
+                                    </div>
+                                    <div class="rating-count">108</div>
+                                </div>
+                                <div class="rating-row">
+                                    <div class="star-label">4 Stars</div>
+                                    <div class="rating-bar-container">
+                                        <div class="rating-bar" style="width: 10%;"></div>
+                                    </div>
+                                    <div class="rating-count">13</div>
+                                </div>
+                                <div class="rating-row">
+                                    <div class="star-label">3 Stars</div>
+                                    <div class="rating-bar-container">
+                                        <div class="rating-bar" style="width: 3%;"></div>
+                                    </div>
+                                    <div class="rating-count">4</div>
+                                </div>
+                                <div class="rating-row">
+                                    <div class="star-label">2 Stars</div>
+                                    <div class="rating-bar-container">
+                                        <div class="rating-bar" style="width: 1%;"></div>
+                                    </div>
+                                    <div class="rating-count">1</div>
+                                </div>
+                                <div class="rating-row">
+                                    <div class="star-label">1 Star</div>
+                                    <div class="rating-bar-container">
+                                        <div class="rating-bar" style="width: 1%;"></div>
+                                    </div>
+                                    <div class="rating-count">1</div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="review-list">
+                            <div class="review-item">
+                                <div class="review-header">
+                                    <div class="reviewer-info">
+                                        <div class="reviewer-avatar">SM</div>
+                                        <div>
+                                            <div class="reviewer-name">Sipho Mthembu</div>
+                                            <div class="review-date">Verified Purchase - 15 Apr 2025</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="review-rating">★★★★★</div>
+                                <div class="review-title">Best safety helmet I've used in 15 years</div>
+                                <div class="review-content">
+                                    <p>After 15 years in construction, I've worn many helmets but this is by far the most comfortable. The ratchet system makes it easy to adjust throughout the day, and the ventilation keeps my head cool even during summer. Worth every cent for the quality and comfort!</p>
+                                </div>
+                            </div>
+    
+                            <div class="review-item">
+                                <div class="review-header">
+                                    <div class="reviewer-info">
+                                        <div class="reviewer-avatar">JN</div>
+                                        <div>
+                                            <div class="reviewer-name">Jesse Ndlovu</div>
+                                            <div class="review-date">Verified Purchase - 2 Apr 2025</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="review-rating">★★★★★</div>
+                                <div class="review-title">Excellent quality and fast delivery</div>
+                                <div class="review-content">
+                                    <p>Purchased these helmets for my entire team of 12. The quality is outstanding and they arrived the next day as promised. My team has reported they're much more comfortable than our previous brand. The adjustability is a huge plus as we have team members with various head sizes.</p>
+                                </div>
+                                <div class="review-photos">
+                                    <div class="review-photo">
+                                        <img src="/api/placeholder/80/80" alt="Team wearing helmets">
+                                    </div>
+                                    <div class="review-photo">
+                                        <img src="/api/placeholder/80/80" alt="Close-up of helmet">
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="review-item">
+                                <div class="review-header">
+                                    <div class="reviewer-info">
+                                        <div class="reviewer-avatar">LV</div>
+                                        <div>
+                                            <div class="reviewer-name">Linda van der Merwe</div>
+                                            <div class="review-date">Verified Purchase - 28 Mar 2025</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="review-rating">★★★★☆</div>
+                                <div class="review-title">Good helmet, but chinstrap could be better</div>
+                                <div class="review-content">
+                                    <p>Overall a good quality helmet that meets all our safety requirements. Comfortable to wear for long periods and the suspension system works well. My only complaint is that the chinstrap could be more comfortable - it tends to irritate after a full day of wear. Still, it's a minor issue for an otherwise excellent product.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="tab-content" id="faq-tab">
+                        <h3>Frequently Asked Questions</h3>
+                        <div class="faq-item">
+                            <h4>How often should I replace this safety helmet?</h4>
+                            <p>The X500 has a recommended service life of 5 years from date of first use, subject to regular inspections. However, if the helmet sustains an impact, shows signs of damage, or is exposed to harsh chemicals, it should be replaced immediately regardless of age.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>Is this helmet suitable for electrical work?</h4>
+                            <p>Yes, the X500 meets Class E electrical requirements, providing protection against electrical hazards up to 1000V a.c. It's suitable for electrical work environments, but always follow proper safety protocols specific to your industry.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>Can I attach accessories to this helmet?</h4>
+                            <p>Yes, the X500 features standard 30mm accessory slots that are compatible with most face shields, earmuffs, and attachable lamps. We recommend using Blannq accessories for guaranteed compatibility.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>How should I clean this helmet?</h4>
+                            <p>Clean the helmet with mild soap and warm water. Avoid using solvents, abrasives, or harsh chemicals as these can damage the shell and reduce the helmet's protective properties. Allow to air dry naturally away from direct heat sources.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>Do you offer bulk discounts?</h4>
+                            <p>Yes, we offer tiered pricing for bulk orders. Please contact our sales team at sales@Blannq.co.za or call 0860 123 456 for a customized quote based on your quantity requirements.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Related Products -->
+        <section class="related-products">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Related Products</h2>
+                    <p>You might also be interested in these quality safety products</p>
+                </div>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-card-image">
+                            <img src="High Visibility Clothing.jpg" alt="Premium Safety Vest">
+                            <div class="product-card-badge">NEW</div>
+                        </div>
+                        <div class="product-card-content">
+                            <a href="#" class="product-card-title">Premium Safety Vest V300</a>
+                            <div class="product-card-rating">★★★★★ (42)</div>
+                            <div class="product-card-price">
+                                <div class="product-card-current-price">R349.99</div>
+                                <div class="product-card-old-price">R399.99</div>
+                            </div>
+                            <div class="product-card-actions">
+                                <button class="quick-add-btn">Add to Cart</button>
+                                <button class="quick-view-btn">Quick View</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-card-image">
+                            <img src="Eye Protection1.jpg" alt="Safety Goggles">
+                        </div>
+                        <div class="product-card-content">
+                            <a href="#" class="product-card-title">Anti-Fog Safety Goggles G200</a>
+                            <div class="product-card-rating">★★★★☆ (78)</div>
+                            <div class="product-card-price">
+                                <div class="product-card-current-price">R249.99</div>
+                            </div>
+                            <div class="product-card-actions">
+                                <button class="quick-add-btn">Add to Cart</button>
+                                <button class="quick-view-btn">Quick View</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-card-image">
+                            <img src="Hand Protection.jpg" alt="Work Gloves">
+                            <div class="product-card-badge">BESTSELLER</div>
+                        </div>
+                        <div class="product-card-content">
+                            <a href="#" class="product-card-title">Heavy Duty Work Gloves GL100</a>
+                            <div class="product-card-rating">★★★★★ (156)</div>
+                            <div class="product-card-price">
+                                <div class="product-card-current-price">R179.99</div>
+                                <div class="product-card-old-price">R199.99</div>
+                            </div>
+                            <div class="product-card-actions">
+                                <button class="quick-add-btn">Add to Cart</button>
+                                <button class="quick-view-btn">Quick View</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-card-image">
+                            <img src="Foot Protection.jpg" alt="Safety Boots">
+                        </div>
+                        <div class="product-card-content">
+                            <a href="#" class="product-card-title">Steel Toe Safety Boots B450</a>
+                            <div class="product-card-rating">★★★★☆ (91)</div>
+                            <div class="product-card-price">
+                                <div class="product-card-current-price">R899.99</div>
+                                <div class="product-card-old-price">R999.99</div>
+                            </div>
+                            <div class="product-card-actions">
+                                <button class="quick-add-btn">Add to Cart</button>
+                                <button class="quick-view-btn">Quick View</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Footer -->
+        <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Blannq</h3>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#mission">Our Mission</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Products</h3>
+                    <ul>
+                        <li><a href="#">Head Protection</a></li>
+                        <li><a href="#">Eye Protection</a></li>
+                        <li><a href="#">Respiratory Protection</a></li>
+                        <li><a href="#">Hand Protection</a></li>
+                        <li><a href="#">Protective Clothing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>123 Safety Road</li>
+                        <li>Johannesburg, South Africa</li>
+                        <li>Email: info@Blannq.co.za</li>
+                        <li>Phone: +27 11 123 4567</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Working Hours</h3>
+                    <ul>
+                        <li>Monday - Friday: 8:00 - 17:00</li>
+                        <li>Saturday: 9:00 - 13:00</li>
+                        <li>Sunday: Closed</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Blannq PPE Supplier. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+        <script>
+            // Tab functionality
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons and contents
+                    tabBtns.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+                    
+                    // Show corresponding content
+                    const tabId = `${btn.dataset.tab}-tab`;
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Thumbnail gallery functionality
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            const mainImage = document.getElementById('main-product-image');
+            
+            thumbnails.forEach(thumbnail => {
+                thumbnail.addEventListener('click', () => {
+                    // Remove active class from all thumbnails
+                    thumbnails.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked thumbnail
+                    thumbnail.classList.add('active');
+                    
+                    // Update main image (in a real site, we would change the src)
+                    // Here we're just simulating the change since we're using placeholder images
+                    const newSrc = thumbnail.querySelector('img').src;
+                    mainImage.src = newSrc.replace('80/80', '600/600');
+                });
+            });
+            
+            // Quantity buttons functionality
+            const minusBtn = document.querySelector('.quantity-btn.minus');
+            const plusBtn = document.querySelector('.quantity-btn.plus');
+            const quantityInput = document.querySelector('.quantity-value');
+            
+            minusBtn.addEventListener('click', () => {
+                const currentValue = parseInt(quantityInput.value);
+                if (currentValue > 1) {
+                    quantityInput.value = currentValue - 1;
+                }
+            });
+            
+            plusBtn.addEventListener('click', () => {
+                const currentValue = parseInt(quantityInput.value);
+                quantityInput.value = currentValue + 1;
+            });
+            
+            // Color options functionality
+            const colorOptions = document.querySelectorAll('.color-option');
+            
+            colorOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    // Remove active class from all options
+                    colorOptions.forEach(o => o.classList.remove('active'));
+                    
+                    // Add active class to clicked option
+                    option.classList.add('active');
+                    
+                    // In a real site, we'd update product info/images based on color selection
+                });
+            });
+        </script>
+    </body>
+    </html>
