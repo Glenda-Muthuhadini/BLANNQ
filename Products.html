@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blannq - Products & PPE Solutions</title>
+    <style>
+        :root {
+            --primary-color: #0047AB; /* Rich blue */
+            --primary-dark: #003380;
+            --secondary-color: #FFD700; /* Yellow */
+            --secondary-dark: #E6C200;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333;
+            --white: #fff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--dark-gray);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .logo-text span {
+            color: var(--secondary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        nav ul li a.active {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .cta-button {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .products-hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: 150px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .products-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: -10px;
+            width: 300px;
+            height: 300px;
+            background-color: var(--secondary-color);
+            opacity: 0.1;
+            border-radius: 50%;
+        }
+
+        .products-hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .products-hero-content h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .products-hero-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        /* Product Categories */
+        .product-categories {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .category-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-image {
+            height: 180px;
+            overflow: hidden;
+            background-color: var(--primary-color);
+            position: relative;
+        }
+
+        .category-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+            opacity: 0.8;
+        }
+
+        .category-card:hover .category-image img {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+
+        .category-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            padding: 20px;
+            color: var(--white);
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        /* Product Section */
+        .product-section {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: var(--dark-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-details {
+            padding: 20px;
+        }
+
+        .product-details h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .product-details p {
+            font-size: 14px;
+            margin-bottom: 15px;
+            color: var(--dark-gray);
+        }
+
+        .product-features {
+            margin-bottom: 15px;
+        }
+
+        .product-features ul {
+            list-style: none;
+            margin-left: 5px;
+        }
+
+        .product-features ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .product-features ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .price-tag {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--dark-gray);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .product-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .view-button {
+            flex: 1;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 8px 0;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .view-button:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .inquiry-button {
+            flex: 1;
+            background-color: transparent;
+            color: var(--primary-color);
+            padding: 8px 0;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            border: 1px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .inquiry-button:hover {
+            background-color: rgba(0, 71, 171, 0.05);
+        }
+
+        /* Featured Products */
+        .featured-products {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .featured-product {
+            display: flex;
+            align-items: center;
+            margin-bottom: 60px;
+            gap: 50px;
+        }
+
+        .featured-product:last-child {
+            margin-bottom: 0;
+        }
+
+        .featured-product:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .featured-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .featured-content {
+            flex: 1;
+        }
+
+        .featured-content h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .featured-content p {
+            margin-bottom: 20px;
+        }
+
+        .featured-features {
+            margin-bottom: 25px;
+        }
+
+        .featured-features ul {
+            list-style: none;
+        }
+
+        .featured-features ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+        }
+
+        .featured-features ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .featured-cta {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 12px 25px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .featured-cta:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Brands Section */
+        .brands {
+            padding: 60px 0;
+            background-color: var(--light-gray);
+        }
+
+        .brands-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .brand-item {
+            flex: 0 0 calc(20% - 30px);
+            min-width: 150px;
+            padding: 20px;
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .brand-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .brand-item img {
+            max-width: 100%;
+            max-height: 60px;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .brand-item:hover img {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background-color: var(--secondary-color);
+            opacity: 0.1;
+            border-radius: 50%;
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            width: 150px;
+            height: 150px;
+            background-color: var(--secondary-color);
+            opacity: 0.1;
+            border-radius: 50%;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .cta-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .primary-cta {
+            background-color: var(--secondary-color);
+            color: var(--dark-gray);
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .primary-cta:hover {
+            background-color: var(--secondary-dark);
+            transform: translateY(-2px);
+        }
+
+        .secondary-cta {
+            background-color: transparent;
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 2px solid var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .secondary-cta:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            opacity: 1;
+            color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            text-align: center;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .featured-product {
+                flex-direction: column !important;
+                gap: 30px;
+            }
+
+            .featured-image {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo {
+                margin-bottom: 15px;
+                justify-content: center;
+            }
+
+            nav ul {
+                justify-content: center;
+                margin-top: 15px;
+            }
+
+            nav ul li {
+                margin: 0 10px;
+            }
+
+            .products-hero-content h1 {
+                font-size: 36px;
+            }
+
+            .section-header h2 {
+                font-size: 30px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .brand-item {
+                flex: 0 0 calc(33.333% - 20px);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .brand-item {
+                flex: 0 0 calc(50% - 15px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <!-- Logo placeholder -->
+                    <div class="logo-text">Blann<span>Q</span></div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="Products.html" class="active">Products</a></li>
+                        <li><a href="Contact.html">Contact Us</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Products Hero Section -->
+    <section class="products-hero">
+        <div class="container">
+            <div class="products-hero-content">
+                <h1>Comprehensive PPE Solutions</h1>
+                <p>Discover our extensive range of high-quality personal protective equipment designed to keep you and your team safe in any work environment.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Categories -->
+    <section class="product-categories">
+        <div class="container">
+            <div class="section-header">
+                <h2>Product Categories</h2>
+                <p>Browse our wide range of safety equipment categories</p>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="Head Protection.jpg" alt="Head Protection" />
+                        <div class="category-title">Head Protection</div>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="Eye Protection.jpg" alt="Eye Protection" />
+                        <div class="category-title">Eye Protection</div>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="Respiratory Protection.jpg" alt="Respiratory Protection" />
+                        <div class="category-title">Respiratory Protection</div>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="Hand Protection.jpg" alt="Hand Protection" />
+                        <div class="category-title">Hand Protection</div>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="Protective Clothing.jpg" alt="Protective Clothing" />
+                        <div class="category-title">Protective Clothing</div>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="Foot Protection.jpg" alt="Foot Protection" />
+                        <div class="category-title">Foot Protection</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Products</h2>
+                <p>Our most popular safety solutions trusted by industry leaders</p>
+            </div>
+            <div class="featured-product">
+                <div class="featured-image">
+                    <img src="Head Protection.jpg" alt="Premium Safety Helmet" />
+                </div>
+                <div class="featured-content">
+                    <h3>Premium Safety Helmet Pro Series</h3>
+                    <p>Our most advanced head protection solution designed for demanding industrial environments, providing superior impact resistance and comfort for all-day wear.</p>
+                    <div class="featured-features">
+                        <ul>
+                            <li>Exceeds SANS 1397 safety standards</li>
+                            <li>Impact-resistant ABS outer shell</li>
+                            <li>Adjustable 6-point suspension system</li>
+                            <li>Ventilation channels for all-day comfort</li>
+                            <li>Compatible with face shields and earmuffs</li>
+                            <li>Available in 8 high-visibility colors</li>
+                        </ul>
+                    </div>
+                    <a href="Item.html" class="featured-cta">View Product Details</a>
+                </div>
+            </div>
+            <div class="featured-product">
+                <div class="featured-image">
+                    <img src="Respirators & Masks.jpg" alt="Industrial Respirator Kit" />
+                </div>
+                <div class="featured-content">
+                    <h3>Industrial Respirator Complete Kit</h3>
+                    <p>A comprehensive respiratory protection solution for industrial environments, protecting against dust, fumes, and harmful airborne particles while ensuring comfortable breathing.</p>
+                    <div class="featured-features">
+                        <ul>
+                            <li>FFP3 protection level (99% filtration)</li>
+                            <li>Adjustable head straps for secure fit</li>
+                            <li>Exhalation valve for reduced breathing resistance</li>
+                            <li>Includes 3 replacement filters</li>
+                            <li>Silicone face seal for comfort and protection</li>
+                            <li>Storage case included</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="featured-cta">View Product Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Head Protection Products -->
+    <section id="head-protection" class="product-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Head Protection</h2>
+                <p>Reliable head protection for various working environments</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="Head Protection3.jpg" alt="Construction Safety Helmet" />
+                    </div>
+                    <div class="product-details">
+                        <div class="price-tag">From R185.00</div>
+                        <h3>Construction Safety Helmet</h3>
+                        <p>High-impact resistant helmet designed for construction sites.</p>
+                        <div class="product-features">
+                            <ul>
+                                <li>SANS 1397 approved</li>
+                                <li>UV-resistant shell</li>
+                                <li>4-point harness</li>
+                            </ul>
+                        </div>
+                        <div class="product-buttons">
+                            <a href="#" class="view-button">View Details</a>
+                            <a href="#" class="inquiry-button">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="Head Protection1.jpg" alt="Mining Hard Hat" />
+                    </div>
+                    <div class="product-details">
+                        <div class="price-tag">From R230.00</div>
+                        <h3>Mining Hard Hat with Lamp Bracket</h3>
+                        <p>Specialized hard hat for mining operations with lamp bracket.</p>
+                        <div class="product-features">
+                            <ul>
+                                <li>Extra impact resistance</li>
+                                <li>Integrated lamp bracket</li>
+                                <li>High visibility options</li>
+                            </ul>
+                        </div>
+                        <div class="product-buttons">
+                            <a href="#" class="view-button">View Details</a>
+                            <a href="#" class="inquiry-button">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="Head Protection2.jpg" alt="Electrical Safety Helmet" />
+                    </div>
+                    <div class="product-details">
+                        <div class="price-tag">From R295.00</div>
+                        <h3>Electrical Safety Helmet</h3>
+                        <p>Dielectric helmet for electrical work environments.</p>
+                        <div class="product-features">
+                            <ul>
+                                <li>1000V electrical insulation</li>
+                                <li>No metal components</li>
+                                <li>Side slots for accessories</li>
+                            </ul>
+                        </div>
+                        <div class="product-buttons">
+                            <a href="#" class="view-button">View Details</a>
+                            <a href="#" class="inquiry-button">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Respiratory Protection Products -->
+    <section id="respiratory-protection" class="product-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Respiratory Protection</h2>
+                <p>Advanced protection against dust, fumes, and airborne particles</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="Respiratory Protection1.jpg" alt="FFP2 Dust Mask" />
+                    </div>
+                    <div class="product-details">
+                        <div class="price-tag">From R35.00</div>
+                        <h3>FFP2 Dust Mask (Box of 20)</h3>
+                        <p>Disposable respirator for protection against dust and aerosols.</p>
+                        <div class="product-features">
+                            <ul>
+                                <li>94% filtration efficiency</li>
+                                <li>Adjustable nose clip</li>
+                                <li>Individually wrapped</li>
+                            </ul>
+                        </div>
+                        <div class="product-buttons">
+                            <a href="#" class="view-button">View Details</a>
+                            <a href="#" class="inquiry-button">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="Respiratory Protection2.jpg" alt="Half Face Respirator" />
+                    </div>
+                    <div class="product-details">
+                        <div class="price-tag">From R450.00</div>
+                        <h3>Half Face Respirator</h3>
+                        <p>Reusable half-face respirator for industrial applications.</p>
+                        <div class="product-features">
+                            <ul>
+                                <li>Dual filter design</li>
+                                <li>Silicone face seal</li>
+                                <li>Adjustable head straps</li>
+                            </ul>
+                        </div>
+                        <div class="product-buttons">
+                            <a href="#" class="view-button">View Details</a>
+                            <a href="#" class="inquiry-button">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="Respiratory Protection3.jpg" alt="Full Face Respirator" />
+                    </div>
+                    <div class="product-details">
+                        <div class="price-tag">From R895.00</div>
+                        <h3>Full Face Respirator</h3>
+                        <p>Complete face and respiratory protection for hazardous environments.</p>
+                        <div class="product-features">
+                            <ul>
+                                <li>Wide-view visor</li>
+                                <li>Compatible with various filters</li>
+                                <li>Speech diaphragm for clear communication</li>
+                            </ul>
+                        </div>
+                        <div class="product-buttons">
+                            <a href="#" class="view-button">View Details</a>
+                            <a href="#" class="inquiry-button">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eye Protection Products -->
+    <section id="eye-protection" class="product-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Eye Protection</h2>
+                <p>Reliable eye protection for various industrial applications</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="Eye Protection1.jpg" alt="Safety Glasses" />
+                    </div>
+                    <div class="product-details">
+                        <div class="price-tag">From R75.00</div>
+                        <h3>Standard Safety Glasses</h3>
+                        <p>Lightweight safety glasses with impact-resistant lenses.</p>
+                        <div class="product-features">
+                            <ul>
+                                <li>UV protection</li>
+                                <li>Anti-scratch coating</li>
+                                <li>Adjustable arms</li>
+                            </ul>
+                        </div>
+                        <div class="product-buttons">
+                            <a href="#" class="view-button">View Details</a>
+                            <a href="#" class="inquiry-button">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="Eye Protection2.jpg" alt="Safety Goggles" />
+                    </div>
+                    <div class="product-details">
+                        <div class="price-tag">From R120.00</div>
+                        <h3>Chemical Splash Goggles</h3>
+                        <p>Full seal goggles for protection against chemical splashes.</p>
+                        <div class="product-features">
+                            <ul>
+                                <li>Anti-fog coating</li>
+                                <li>Chemical resistant</li>
+                                <li>Indirect ventilation</li>
+                            </ul>
+                        </div>
+                        <div class="product-buttons">
+                            <a href="#" class="view-button">View Details</a>
+                            <a href="#" class="inquiry-button">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="Eye Protection3.jpg" alt="Face Shield" />
+                    </div>
+                    <div class="product-details">
+                        <div class="price-tag">From R195.00</div>
+                        <h3>Full Face Shield</h3>
+                        <p>Complete face protection for grinding and heavy-duty work.</p>
+                        <div class="product-features">
+                            <ul>
+                                <li>Impact-resistant visor</li>
+                                <li>Flip-up design</li>
+                                <li>Compatible with hard hats</li>
+                            </ul>
+                        </div>
+                        <div class="product-buttons">
+                            <a href="#" class="view-button">View Details</a>
+                            <a href="#" class="inquiry-button">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hand Protection Products -->
+    <section id="hand-protection" class="product-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Hand Protection</h2>
+                <p>Specialized gloves for different workplace hazards</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="Hand Protection1.jpg" alt="Cut Resistant Gloves" />
+                    </div>
+                    <div class="product-details">
+                        <div class="price-tag">From R95.00</div>
+                        <h3>Cut Resistant Gloves</h3>
+                        <p>Level 5 cut resistance for handling sharp materials.</p>
+                        <div class="product-features">
+                            <ul>
+                                <li>HPPE fiber construction</li>
+                                <li>Nitrile palm coating</li>
+                                <li>Breathable back</li>
+                            </ul>
+                        </div>
+                        <div class="product-buttons">
+                            <a href="#" class="view-button">View Details</a>
+                            <a href="#" class="inquiry-button">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="Hand Protection2.jpg" alt="Chemical Resistant Gloves" />
+                    </div>
+                    <div class="product-details">
+                        <div class="price-tag">From R130.00</div>
+                        <h3>Chemical Resistant Gloves</h3>
+                        <p>Heavy-duty protection against chemicals and solvents.</p>
+                        <div class="product-features">
+                            <ul>
+                                <li>Nitrile construction</li>
+                                <li>Flock lined for comfort</li>
+                                <li>Extended cuff</li>
+                            </ul>
+                        </div>
+                        <div class="product-buttons">
+                            <a href="#" class="view-button">View Details</a>
+                            <a href="#" class="inquiry-button">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="Hand Protection3.jpg" alt="Heat Resistant Gloves" />
+                    </div>
+                    <div class="product-details">
+                        <div class="price-tag">From R210.00</div>
+                        <h3>Heat Resistant Gloves</h3>
+                        <p>Protection against high temperatures up to 350°C.</p>
+                        <div class="product-features">
+                            <ul>
+                                <li>Kevlar outer layer</li>
+                                <li>Cotton inner lining</li>
+                                <li>Extended forearm protection</li>
+                            </ul>
+                        </div>
+                        <div class="product-buttons">
+                            <a href="#" class="view-button">View Details</a>
+                            <a href="#" class="inquiry-button">Inquire</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands Section -->
+    <section class="brands">
+        <div class="container">
+            <div class="section-header">
+                <h2>Trusted Brands</h2>
+                <p>We partner with the world's leading safety equipment manufacturers</p>
+            </div>
+            <div class="brands-container">
+                <div class="brand-item">
+                    <img src="Logo1.jpg" alt="Brand 1" />
+                </div>
+                <div class="brand-item">
+                    <img src="Logo2.jpg" alt="Brand 2" />
+                </div>
+                <div class="brand-item">
+                    <img src="Logo3.jpg" alt="Brand 3" />
+                </div>
+                <div class="brand-item">
+                    <img src="Logo4.jpg" alt="Brand 4" />
+                </div>
+                <div class="brand-item">
+                    <img src="Logo5.jpg" alt="Brand 5" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Need Customized Safety Solutions?</h2>
+                <p>Our team of safety experts is ready to help you find the perfect PPE solutions for your specific industry requirements. Contact us today for personalized assistance and bulk order inquiries.</p>
+                <div class="cta-buttons">
+                    <a href="#" class="primary-cta">Request a Quote</a>
+                    <a href="#" class="secondary-cta">Speak to an Expert</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Blannq</h3>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#mission">Our Mission</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Products</h3>
+                    <ul>
+                        <li><a href="#">Head Protection</a></li>
+                        <li><a href="#">Eye Protection</a></li>
+                        <li><a href="#">Respiratory Protection</a></li>
+                        <li><a href="#">Hand Protection</a></li>
+                        <li><a href="#">Protective Clothing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>123 Safety Road</li>
+                        <li>Johannesburg, South Africa</li>
+                        <li>Email: info@Blannq.co.za</li>
+                        <li>Phone: +27 11 123 4567</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Working Hours</h3>
+                    <ul>
+                        <li>Monday - Friday: 8:00 - 17:00</li>
+                        <li>Saturday: 9:00 - 13:00</li>
+                        <li>Sunday: Closed</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Blannq PPE Supplier. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
