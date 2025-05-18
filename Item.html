@@ -114,6 +114,16 @@
             transform: translateY(-2px);
         }
 
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+
         /* Breadcrumb */
         .breadcrumb {
             padding: 120px 0 20px;
@@ -123,6 +133,7 @@
         .breadcrumb-container {
             display: flex;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .breadcrumb-item {
@@ -181,6 +192,7 @@
         .thumbnail-container {
             display: flex;
             gap: 15px;
+            flex-wrap: wrap;
         }
 
         .thumbnail {
@@ -249,6 +261,7 @@
             display: flex;
             align-items: center;
             margin-bottom: 20px;
+            flex-wrap: wrap;
         }
 
         .current-price {
@@ -312,6 +325,7 @@
         .color-options {
             display: flex;
             gap: 10px;
+            flex-wrap: wrap;
         }
 
         .color-option {
@@ -459,6 +473,7 @@
             align-items: center;
             margin-bottom: 20px;
             gap: 15px;
+            flex-wrap: wrap;
         }
 
         .delivery-item {
@@ -479,6 +494,7 @@
             align-items: center;
             gap: 15px;
             margin-top: 20px;
+            flex-wrap: wrap;
         }
 
         .cert-icon {
@@ -497,6 +513,8 @@
             display: flex;
             border-bottom: 1px solid var(--medium-gray);
             margin-bottom: 30px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         .tab-btn {
@@ -509,6 +527,7 @@
             color: var(--dark-gray);
             cursor: pointer;
             transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
         .tab-btn.active {
@@ -552,12 +571,14 @@
             margin-bottom: 30px;
             padding-bottom: 20px;
             border-bottom: 1px solid var(--medium-gray);
+            flex-wrap: wrap;
         }
 
         .average-rating {
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin-bottom: 20px;
         }
 
         .rating-number {
@@ -576,6 +597,7 @@
         .rating-breakdown {
             flex: 1;
             margin-left: 40px;
+            min-width: 250px;
         }
 
         .rating-row {
@@ -623,11 +645,13 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 10px;
+            flex-wrap: wrap;
         }
 
         .reviewer-info {
             display: flex;
             align-items: center;
+            margin-bottom: 10px;
         }
 
         .reviewer-avatar {
@@ -670,6 +694,7 @@
             display: flex;
             gap: 10px;
             margin-top: 15px;
+            flex-wrap: wrap;
         }
 
         .review-photo {
@@ -791,6 +816,7 @@
             display: flex;
             align-items: center;
             margin-bottom: 15px;
+            flex-wrap: wrap;
         }
 
         .product-card-current-price {
@@ -902,6 +928,38 @@
             opacity: 0.8;
         }
 
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+
         /* Responsive Design */
         @media (max-width: 992px) {
             .product-container {
@@ -910,6 +968,39 @@
 
             .product-info {
                 padding-top: 20px;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .header-content {
+                position: relative;
+            }
+
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                padding: 10px 0;
+                display: none;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding: 0 20px;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+                text-align: center;
             }
         }
 
@@ -952,6 +1043,25 @@
                 margin-left: 0;
                 width: 100%;
             }
+
+            .breadcrumb-container {
+                overflow-x: auto;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 10px;
+            }
+
+            .review-header {
+                flex-direction: column;
+            }
+
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -962,6 +1072,37 @@
             .delivery-info {
                 flex-direction: column;
                 align-items: flex-start;
+            }
+
+            .wishlist-btn {
+                width: 100%;
+            }
+
+            .review-photos {
+                justify-content: center;
+            }
+
+            .product-label {
+                top: 10px;
+                left: 10px;
+                font-size: 12px;
+                padding: 3px 8px;
+            }
+
+            .thumbnail-container {
+                justify-content: center;
+            }
+
+            .product-info h1 {
+                font-size: 24px;
+            }
+
+            .current-price {
+                font-size: 24px;
+            }
+
+            .section-header h2 {
+                font-size: 24px;
             }
         }
     </style>
@@ -978,7 +1119,7 @@
                 <nav>
                     <ul>
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="Products.html">Products</a></li>
+                        <li><a href="Products.html" class="active">Products</a></li>
                         <li><a href="Contact.html">Contact Us</a></li>
                     </ul>
                 </nav>
@@ -1012,17 +1153,14 @@
                         <img src="Head Protection.jpg" alt="Premium Safety Helmet X500" id="main-product-image">
                     </div>
                     <div class="thumbnail-container">
-                        <div class="thumbnail active">
-                            <img src="Head Protection1.jpg" alt="Safety Helmet Thumbnail 1">
+                        <div class="thumbnail active" data-image="/api/placeholder/600/600">
+                            <img src="Head Protection1.jpg" alt="Helmet front view">
                         </div>
-                        <div class="thumbnail">
-                            <img src="Head Protection2.jpg" alt="Safety Helmet Thumbnail 2">
+                        <div class="thumbnail" data-image="/api/placeholder/600/600">
+                            <img src="Head Protection2.jpg" alt="Helmet side view">
                         </div>
-                        <div class="thumbnail">
-                            <img src="Head Protection3.jpg" alt="Safety Helmet Thumbnail 3">
-                        </div>
-                        <div class="thumbnail">
-                            <img src="Head Protection1.jpg" alt="Safety Helmet Thumbnail 4">
+                        <div class="thumbnail" data-image="/api/placeholder/600/600">
+                            <img src="Head Protection3.jpg" alt="Helmet back view">
                         </div>
                     </div>
                 </div>
@@ -1030,49 +1168,43 @@
                 <!-- Product Info -->
                 <div class="product-info">
                     <h1>Premium Safety Helmet X500</h1>
-                    <div class="product-code">SKU: HS-X500-BLU</div>
+                    <div class="product-code">SKU: KDSH-X500-BLU</div>
                     
                     <div class="product-rating">
                         <div class="rating-stars">★★★★★</div>
-                        <div class="rating-count">(127 reviews)</div>
+                        <div class="rating-count">(128 reviews)</div>
                     </div>
                     
                     <div class="product-price">
-                        <div class="current-price">R899.99</div>
-                        <div class="old-price">R1,099.99</div>
-                        <div class="price-savings">Save 18%</div>
-                    </div>
-                    
-                    <div class="stock-info">
-                        <span class="stock-icon">✓</span>
-                        <span class="stock-text">In Stock - Ships within 24 hours</span>
+                        <div class="current-price">$89.99</div>
+                        <div class="old-price">$119.99</div>
+                        <div class="price-savings">Save 25%</div>
                     </div>
                     
                     <div class="product-description">
-                        <p>The X500 Premium Safety Helmet provides superior head protection for industrial environments. Engineered with high-impact resistant materials and featuring an advanced suspension system, this helmet exceeds SANS 1397 safety standards for optimal workplace safety.</p>
+                        <p>The Blannq Premium Safety Helmet X500 provides superior head protection for construction, industrial work, and other hazardous environments. Engineered with advanced impact absorption technology and a comfortable fit system, this helmet exceeds international safety standards while ensuring all-day comfort.</p>
                     </div>
                     
                     <div class="product-features">
-                        <h3>Key Features:</h3>
                         <ul class="feature-list">
-                            <li>High-density polyethylene shell for maximum impact resistance</li>
-                            <li>6-point suspension system for optimal weight distribution</li>
-                            <li>Adjustable ratchet headband for custom fit</li>
-                            <li>Ventilated design for all-day comfort</li>
-                            <li>Chin strap included for secure positioning</li>
-                            <li>Compatible with face shields and earmuffs</li>
-                            <li>UV-resistant material extends product lifespan</li>
+                            <li>Exceeds ANSI Z89.1-2014 Type I, Class E safety standards</li>
+                            <li>Advanced 6-point suspension system for impact distribution</li>
+                            <li>UV-resistant ABS shell with reinforced ridges</li>
+                            <li>Adjustable ratchet system for secure fit (52-64cm)</li>
+                            <li>Moisture-wicking sweatband with antibacterial treatment</li>
+                            <li>Compatible with face shields and earmuffs (sold separately)</li>
+                            <li>Reflective strips for enhanced visibility in low light</li>
                         </ul>
                     </div>
                     
                     <div class="product-variants">
                         <div class="variant-label">Color:</div>
                         <div class="color-options">
-                            <div class="color-option color-blue active" title="Blue"></div>
-                            <div class="color-option color-red" title="Red"></div>
-                            <div class="color-option color-yellow" title="Yellow"></div>
-                            <div class="color-option color-white" title="White"></div>
-                            <div class="color-option color-black" title="Black"></div>
+                            <div class="color-option color-blue active" data-color="Blue"></div>
+                            <div class="color-option color-red" data-color="Red"></div>
+                            <div class="color-option color-yellow" data-color="Yellow"></div>
+                            <div class="color-option color-white" data-color="White"></div>
+                            <div class="color-option color-black" data-color="Black"></div>
                         </div>
                     </div>
                     
@@ -1080,348 +1212,356 @@
                         <div class="variant-label">Quantity:</div>
                         <div class="quantity-input">
                             <button class="quantity-btn minus">-</button>
-                            <input type="number" value="1" min="1" class="quantity-value">
+                            <input type="text" class="quantity-value" value="1" readonly>
                             <button class="quantity-btn plus">+</button>
                         </div>
-                        <div class="product-actions">
-                            <button class="add-to-cart-btn">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                                </svg>
-                                Add to Cart
-                            </button>
-                            <button class="wishlist-btn">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-                                </svg>
-                            </button>
+                    </div>
+                    
+                    <div class="stock-info">
+                        <span class="stock-icon">✓</span>
+                        <span class="stock-text">In Stock - Ready to ship within 24 hours</span>
+                    </div>
+                    
+                    <div class="product-actions">
+                        <button class="add-to-cart-btn">
+                            <span>Add to Cart</span>
+                        </button>
+                        <button class="wishlist-btn">♡</button>
+                    </div>
+                    
+                    <div class="delivery-info">
+                        <div class="delivery-item">
+                            <span class="delivery-icon">🚚</span>
+                            <span>Free shipping on orders over $150</span>
                         </div>
-                        
-                        <div class="delivery-info">
-                            <div class="delivery-item">
-                                <div class="delivery-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                        <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5v-7zm1.294 7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456zM12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12v4zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
-                                    </svg>
-                                </div>
-                                Free shipping nationwide
-                            </div>
-                            <div class="delivery-item">
-                                <div class="delivery-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                        <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
-                                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
-                                    </svg>
-                                </div>
-                                Next-day delivery available
-                            </div>
-                            <div class="delivery-item">
-                                <div class="delivery-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                        <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
-                                        <path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
-                                    </svg>
-                                </div>
-                                30-day returns policy
-                            </div>
+                        <div class="delivery-item">
+                            <span class="delivery-icon">↩️</span>
+                            <span>30-day easy returns</span>
                         </div>
+                        <div class="delivery-item">
+                            <span class="delivery-icon">🛡️</span>
+                            <span>2-year warranty</span>
+                        </div>
+                    </div>
+                    
+                    <div class="certifications">
+                        <img src="/api/placeholder/40/40" alt="ANSI Certified" class="cert-icon">
+                        <img src="/api/placeholder/40/40" alt="CE Certified" class="cert-icon">
+                        <img src="/api/placeholder/40/40" alt="ISO 9001" class="cert-icon">
                     </div>
                 </div>
-    
-                <!-- Product Tabs -->
-                <div class="product-tabs">
-                    <div class="tabs-header">
-                        <button class="tab-btn active" data-tab="description">Description</button>
-                        <button class="tab-btn" data-tab="specifications">Specifications</button>
-                        <button class="tab-btn" data-tab="reviews">Reviews (127)</button>
-                        <button class="tab-btn" data-tab="faq">FAQ</button>
-                    </div>
-    
-                    <div class="tab-content active" id="description-tab">
-                        <h3>Product Description</h3>
-                        <p>The Premium Safety Helmet X500 is engineered for professionals who demand the highest level of head protection in industrial environments. This premium-grade helmet exceeds all South African safety standards and has been rigorously tested to provide optimal protection against impacts, falling objects, and electrical hazards.</p>
+            </div>
+            
+            <!-- Product Tabs -->
+            <div class="product-tabs">
+                <div class="tabs-header">
+                    <button class="tab-btn active" data-tab="description">Description</button>
+                    <button class="tab-btn" data-tab="specifications">Specifications</button>
+                    <button class="tab-btn" data-tab="reviews">Reviews</button>
+                    <button class="tab-btn" data-tab="shipping">Shipping & Returns</button>
+                </div>
+                
+                <div class="tab-content active" id="description">
+                    <h3>Product Overview</h3>
+                    <p>The Blannq Premium Safety Helmet X500 is designed to provide maximum head protection in demanding industrial environments. This premium hard hat features an innovative 6-point suspension system that distributes impact forces effectively, reducing the risk of head injuries during accidents.</p>
+                    
+                    <p>The helmet shell is constructed with high-density, UV-resistant ABS plastic that's reinforced with strategic ridging to enhance structural integrity without adding unnecessary weight. At just 380 grams, the X500 provides all-day comfort without compromising on safety.</p>
+                    
+                    <h3>Comfort and Fit</h3>
+                    <p>We understand that safety equipment is only effective when it's worn consistently. That's why the X500 includes our patented ComfortFit™ adjustment system, allowing for precise sizing between 52-64cm head circumferences. The ratchet mechanism enables easy one-handed adjustment, even while wearing gloves.</p>
+                    
+                    <p>The moisture-wicking sweatband features antibacterial treatment to prevent odor buildup during extended use. Four ventilation channels promote airflow without compromising the helmet's electrical insulation properties, keeping workers cooler in hot conditions.</p>
+                    
+                    <h3>Versatility and Integration</h3>
+                    <p>The X500 helmet is designed as part of a comprehensive PPE system. Standard accessory slots are compatible with Blannq face shields, earmuffs, and headlamps (all sold separately). Reflective strips on all sides enhance visibility in low-light conditions, making this helmet ideal for roadwork, mining, and night shift operations.</p>
+                    
+                    <h3>Industry Compliance</h3>
+                    <p>The Premium Safety Helmet X500 meets or exceeds the following safety standards:</p>
+                    <ul>
+                        <li>ANSI/ISEA Z89.1-2014 Type I, Class E</li>
+                        <li>EN 397:2012+A1:2012</li>
+                        <li>AS/NZS 1801:1997</li>
+                        <li>CSA Z94.1-15</li>
+                    </ul>
+                </div>
+                
+                <div class="tab-content" id="specifications">
+                    <table class="specs-table">
+                        <tr>
+                            <th>Material</th>
+                            <td>High-density ABS plastic with UV stabilizers</td>
+                        </tr>
+                        <tr>
+                            <th>Weight</th>
+                            <td>380g (0.84 lbs)</td>
+                        </tr>
+                        <tr>
+                            <th>Size Range</th>
+                            <td>Adjustable 52-64cm (20.5-25.2 inches)</td>
+                        </tr>
+                        <tr>
+                            <th>Suspension</th>
+                            <td>6-point textile webbing with ratchet adjustment</td>
+                        </tr>
+                        <tr>
+                            <th>Standards Compliance</th>
+                            <td>ANSI/ISEA Z89.1-2014 Type I, Class E; EN 397:2012+A1:2012; AS/NZS 1801:1997; CSA Z94.1-15</td>
+                        </tr>
+                        <tr>
+                            <th>Impact Protection</th>
+                            <td>Top impact protection up to 40 joules</td>
+                        </tr>
+                        <tr>
+                            <th>Electrical Insulation</th>
+                            <td>Protects against accidental contact with electrical conductors up to 20,000 volts</td>
+                        </tr>
+                        <tr>
+                            <th>Temperature Range</th>
+                            <td>Tested from -30°C to +50°C (-22°F to 122°F)</td>
+                        </tr>
+                        <tr>
+                            <th>Reflective Elements</th>
+                            <td>360° high-visibility reflective strips</td>
+                        </tr>
+                        <tr>
+                            <th>Accessory Compatibility</th>
+                            <td>30mm standard slot for face shields, earmuffs, and headlamps</td>
+                        </tr>
+                        <tr>
+                            <th>Replacement Parts</th>
+                            <td>Sweatband, suspension system, chin strap (all available separately)</td>
+                        </tr>
+                        <tr>
+                            <th>Country of Origin</th>
+                            <td>Made in Canada</td>
+                        </tr>
+                        <tr>
+                            <th>Warranty</th>
+                            <td>2 years limited manufacturer warranty</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="tab-content" id="reviews">
+                    <div class="review-summary">
+                        <div class="average-rating">
+                            <div class="rating-number">4.8</div>
+                            <div class="rating-stars">★★★★★</div>
+                            <div class="total-reviews">Based on 128 reviews</div>
+                        </div>
                         
-                        <p>The X500 features a high-density polyethylene shell that provides superior impact resistance while maintaining a lightweight design for all-day comfort. The innovative 6-point suspension system distributes weight evenly across the head, reducing pressure points and fatigue during extended wear.</p>
-                        
-                        <p>Designed with user comfort in mind, the X500 includes a ratchet adjustment system that allows for a quick and secure custom fit. The strategic ventilation openings provide excellent airflow, keeping workers cool even in the hottest conditions without compromising safety.</p>
-                        
-                        <p>The helmet's shell is UV-stabilized to prevent degradation from sun exposure, ensuring a longer lifespan even in harsh outdoor environments. The X500 is also compatible with a wide range of accessories including face shields, earmuffs, and attachable lights, making it a versatile choice for various industries.</p>
-                        
-                        <p>Blannq stands behind the quality of the X500 with a 2-year warranty against defects in materials and workmanship. Choose the X500 for uncompromising safety and comfort that professionals trust.</p>
-                    </div>
-    
-                    <div class="tab-content" id="specifications-tab">
-                        <h3>Technical Specifications</h3>
-                        <table class="specs-table">
-                            <tr>
-                                <th>Material</th>
-                                <td>High-density polyethylene (HDPE)</td>
-                            </tr>
-                            <tr>
-                                <th>Weight</th>
-                                <td>385g</td>
-                            </tr>
-                            <tr>
-                                <th>Standards</th>
-                                <td>SANS 1397, EN 397, ANSI Z89.1 Type I, Class E</td>
-                            </tr>
-                            <tr>
-                                <th>Impact Protection</th>
-                                <td>Top, lateral, and rear impact protection</td>
-                            </tr>
-                            <tr>
-                                <th>Suspension System</th>
-                                <td>6-point with textile straps</td>
-                            </tr>
-                            <tr>
-                                <th>Adjustment</th>
-                                <td>Ratchet system (52-64cm head circumference)</td>
-                            </tr>
-                            <tr>
-                                <th>Temperature Range</th>
-                                <td>-30°C to +50°C</td>
-                            </tr>
-                            <tr>
-                                <th>Electrical Insulation</th>
-                                <td>Up to 1000V a.c. (Class E)</td>
-                            </tr>
-                            <tr>
-                                <th>Chinstrap</th>
-                                <td>Included, 4-point attachment</td>
-                            </tr>
-                            <tr>
-                                <th>Accessories Compatibility</th>
-                                <td>30mm slots for face shields, earmuffs, and lamps</td>
-                            </tr>
-                            <tr>
-                                <th>Warranty</th>
-                                <td>2 years</td>
-                            </tr>
-                            <tr>
-                                <th>Service Life</th>
-                                <td>5 years (subject to inspection)</td>
-                            </tr>
-                        </table>
-                    </div>
-    
-                    <div class="tab-content" id="reviews-tab">
-                        <div class="review-summary">
-                            <div class="average-rating">
-                                <div class="rating-number">4.8</div>
-                                <div class="rating-stars">★★★★★</div>
-                                <div class="total-reviews">Based on 127 reviews</div>
+                        <div class="rating-breakdown">
+                            <div class="rating-row">
+                                <div class="star-label">5 Stars</div>
+                                <div class="rating-bar-container">
+                                    <div class="rating-bar" style="width: 80%;"></div>
+                                </div>
+                                <div class="rating-count">102</div>
                             </div>
-                            <div class="rating-breakdown">
-                                <div class="rating-row">
-                                    <div class="star-label">5 Stars</div>
-                                    <div class="rating-bar-container">
-                                        <div class="rating-bar" style="width: 85%;"></div>
-                                    </div>
-                                    <div class="rating-count">108</div>
+                            <div class="rating-row">
+                                <div class="star-label">4 Stars</div>
+                                <div class="rating-bar-container">
+                                    <div class="rating-bar" style="width: 15%;"></div>
                                 </div>
-                                <div class="rating-row">
-                                    <div class="star-label">4 Stars</div>
-                                    <div class="rating-bar-container">
-                                        <div class="rating-bar" style="width: 10%;"></div>
-                                    </div>
-                                    <div class="rating-count">13</div>
+                                <div class="rating-count">19</div>
+                            </div>
+                            <div class="rating-row">
+                                <div class="star-label">3 Stars</div>
+                                <div class="rating-bar-container">
+                                    <div class="rating-bar" style="width: 3%;"></div>
                                 </div>
-                                <div class="rating-row">
-                                    <div class="star-label">3 Stars</div>
-                                    <div class="rating-bar-container">
-                                        <div class="rating-bar" style="width: 3%;"></div>
-                                    </div>
-                                    <div class="rating-count">4</div>
+                                <div class="rating-count">4</div>
+                            </div>
+                            <div class="rating-row">
+                                <div class="star-label">2 Stars</div>
+                                <div class="rating-bar-container">
+                                    <div class="rating-bar" style="width: 1%;"></div>
                                 </div>
-                                <div class="rating-row">
-                                    <div class="star-label">2 Stars</div>
-                                    <div class="rating-bar-container">
-                                        <div class="rating-bar" style="width: 1%;"></div>
-                                    </div>
-                                    <div class="rating-count">1</div>
+                                <div class="rating-count">2</div>
+                            </div>
+                            <div class="rating-row">
+                                <div class="star-label">1 Star</div>
+                                <div class="rating-bar-container">
+                                    <div class="rating-bar" style="width: 1%;"></div>
                                 </div>
-                                <div class="rating-row">
-                                    <div class="star-label">1 Star</div>
-                                    <div class="rating-bar-container">
-                                        <div class="rating-bar" style="width: 1%;"></div>
+                                <div class="rating-count">1</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="review-list">
+                        <div class="review-item">
+                            <div class="review-header">
+                                <div class="reviewer-info">
+                                    <div class="reviewer-avatar">JD</div>
+                                    <div>
+                                        <div class="reviewer-name">John D.</div>
+                                        <div class="review-date">Verified Purchase - March 15, 2025</div>
                                     </div>
-                                    <div class="rating-count">1</div>
+                                </div>
+                                <div class="review-rating">★★★★★</div>
+                            </div>
+                            <div class="review-title">Best helmet I've used in 20 years of construction</div>
+                            <div class="review-content">
+                                <p>After two decades in construction, I've gone through my fair share of safety helmets. The X500 is by far the most comfortable I've ever worn, especially during 10+ hour shifts. The adjustment system is smooth and stays in place all day. The ventilation actually works without compromising safety, which is rare in my experience. Worth every penny.</p>
+                            </div>
+                            <div class="review-photos">
+                                <div class="review-photo">
+                                    <img src="/api/placeholder/80/80" alt="Review photo">
+                                </div>
+                                <div class="review-photo">
+                                    <img src="/api/placeholder/80/80" alt="Review photo">
                                 </div>
                             </div>
                         </div>
-    
-                        <div class="review-list">
-                            <div class="review-item">
-                                <div class="review-header">
-                                    <div class="reviewer-info">
-                                        <div class="reviewer-avatar">SM</div>
-                                        <div>
-                                            <div class="reviewer-name">Sipho Mthembu</div>
-                                            <div class="review-date">Verified Purchase - 15 Apr 2025</div>
-                                        </div>
+                        
+                        <div class="review-item">
+                            <div class="review-header">
+                                <div class="reviewer-info">
+                                    <div class="reviewer-avatar">SM</div>
+                                    <div>
+                                        <div class="reviewer-name">Sarah M.</div>
+                                        <div class="review-date">Verified Purchase - February 28, 2025</div>
                                     </div>
                                 </div>
                                 <div class="review-rating">★★★★★</div>
-                                <div class="review-title">Best safety helmet I've used in 15 years</div>
-                                <div class="review-content">
-                                    <p>After 15 years in construction, I've worn many helmets but this is by far the most comfortable. The ratchet system makes it easy to adjust throughout the day, and the ventilation keeps my head cool even during summer. Worth every cent for the quality and comfort!</p>
-                                </div>
                             </div>
-    
-                            <div class="review-item">
-                                <div class="review-header">
-                                    <div class="reviewer-info">
-                                        <div class="reviewer-avatar">JN</div>
-                                        <div>
-                                            <div class="reviewer-name">Jesse Ndlovu</div>
-                                            <div class="review-date">Verified Purchase - 2 Apr 2025</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="review-rating">★★★★★</div>
-                                <div class="review-title">Excellent quality and fast delivery</div>
-                                <div class="review-content">
-                                    <p>Purchased these helmets for my entire team of 12. The quality is outstanding and they arrived the next day as promised. My team has reported they're much more comfortable than our previous brand. The adjustability is a huge plus as we have team members with various head sizes.</p>
-                                </div>
-                                <div class="review-photos">
-                                    <div class="review-photo">
-                                        <img src="/api/placeholder/80/80" alt="Team wearing helmets">
-                                    </div>
-                                    <div class="review-photo">
-                                        <img src="/api/placeholder/80/80" alt="Close-up of helmet">
-                                    </div>
-                                </div>
+                            <div class="review-title">Perfect fit for smaller heads</div>
+                            <div class="review-content">
+                                <p>As a female site engineer, I've always struggled to find PPE that fits properly. Most helmets wobble around on my head, which isn't just annoying - it's dangerous. The X500's adjustment system actually goes small enough to fit me securely. The blue color is also professional looking and distinctive on site. Highly recommend for anyone who's had fit issues with standard helmets.</p>
                             </div>
-    
-                            <div class="review-item">
-                                <div class="review-header">
-                                    <div class="reviewer-info">
-                                        <div class="reviewer-avatar">LV</div>
-                                        <div>
-                                            <div class="reviewer-name">Linda van der Merwe</div>
-                                            <div class="review-date">Verified Purchase - 28 Mar 2025</div>
-                                        </div>
+                        </div>
+                        
+                        <div class="review-item">
+                            <div class="review-header">
+                                <div class="reviewer-info">
+                                    <div class="reviewer-avatar">RL</div>
+                                    <div>
+                                        <div class="reviewer-name">Robert L.</div>
+                                        <div class="review-date">Verified Purchase - April 2, 2025</div>
                                     </div>
                                 </div>
                                 <div class="review-rating">★★★★☆</div>
-                                <div class="review-title">Good helmet, but chinstrap could be better</div>
-                                <div class="review-content">
-                                    <p>Overall a good quality helmet that meets all our safety requirements. Comfortable to wear for long periods and the suspension system works well. My only complaint is that the chinstrap could be more comfortable - it tends to irritate after a full day of wear. Still, it's a minor issue for an otherwise excellent product.</p>
-                                </div>
+                            </div>
+                            <div class="review-title">Great helmet, accessory slots could be better</div>
+                            <div class="review-content">
+                                <p>Overall a very good helmet. Lightweight, comfortable even in hot conditions, and feels solidly built. My only complaint is that the accessory slots are a bit tight - I had to force my existing earmuffs to fit. They work fine now, but it was a struggle initially. Taking off one star for that, but otherwise would recommend.</p>
                             </div>
                         </div>
                     </div>
+                </div>
+                
+                <div class="tab-content" id="shipping">
+                    <h3>Shipping Information</h3>
+                    <p>We offer the following shipping options for all safety helmets:</p>
+                    <ul>
+                        <li><strong>Standard Shipping (3-5 business days):</strong> $8.99</li>
+                        <li><strong>Express Shipping (1-2 business days):</strong> $15.99</li>
+                        <li><strong>Free Standard Shipping</strong> on all orders over $150</li>
+                    </ul>
+                    <p>Orders placed before 2 PM EST on business days will be processed the same day. All orders include tracking information sent to your email once your package is shipped.</p>
+                    
+                    <h3>International Shipping</h3>
+                    <p>We currently ship to the USA, Canada, and select European countries. International shipping costs and delivery times vary by location. Please see the checkout page for specific rates to your country.</p>
+                    
+                    <h3>Returns & Warranty</h3>
+                    <p>All Blannq safety helmets come with our 30-day satisfaction guarantee. If you're not completely satisfied with your purchase, you may return it in new, unused condition with all original packaging for a full refund or exchange.</p>
+                    
+                    <p>Additionally, the Premium Safety Helmet X500 includes a 2-year manufacturer's warranty against defects in materials and workmanship under normal use. This warranty does not cover damage from accidents, improper use, or normal wear and tear.</p>
+                    
+                    <p>To initiate a return or warranty claim, please contact our customer service team at support@Blannq.com or call 1-800-Blannq (592-3394).</p>
+                </div>
+            </div>
+        </div>
+    </section>
     
-                    <div class="tab-content" id="faq-tab">
-                        <h3>Frequently Asked Questions</h3>
-                        <div class="faq-item">
-                            <h4>How often should I replace this safety helmet?</h4>
-                            <p>The X500 has a recommended service life of 5 years from date of first use, subject to regular inspections. However, if the helmet sustains an impact, shows signs of damage, or is exposed to harsh chemicals, it should be replaced immediately regardless of age.</p>
+    <!-- Related Products -->
+    <section class="related-products">
+        <div class="container">
+            <div class="section-header">
+                <h2>You May Also Like</h2>
+                <p>Explore more Blannq safety products to complete your PPE kit</p>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-card-image">
+                        <img src="Eye Protection.jpg" alt="Safety Goggles Pro">
+                        <div class="product-card-badge">NEW</div>
+                    </div>
+                    <div class="product-card-content">
+                        <a href="#" class="product-card-title">Safety Goggles Pro X200</a>
+                        <div class="product-card-rating">★★★★★ (87)</div>
+                        <div class="product-card-price">
+                            <div class="product-card-current-price">$34.99</div>
+                            <div class="product-card-old-price">$44.99</div>
                         </div>
-                        <div class="faq-item">
-                            <h4>Is this helmet suitable for electrical work?</h4>
-                            <p>Yes, the X500 meets Class E electrical requirements, providing protection against electrical hazards up to 1000V a.c. It's suitable for electrical work environments, but always follow proper safety protocols specific to your industry.</p>
+                        <div class="product-card-actions">
+                            <button class="quick-add-btn">Add to Cart</button>
+                            <button class="quick-view-btn">Quick View</button>
                         </div>
-                        <div class="faq-item">
-                            <h4>Can I attach accessories to this helmet?</h4>
-                            <p>Yes, the X500 features standard 30mm accessory slots that are compatible with most face shields, earmuffs, and attachable lamps. We recommend using Blannq accessories for guaranteed compatibility.</p>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-card-image">
+                        <img src="Hand Protection.jpg" alt="Work Gloves">
+                    </div>
+                    <div class="product-card-content">
+                        <a href="#" class="product-card-title">Heavy Duty Work Gloves G100</a>
+                        <div class="product-card-rating">★★★★☆ (56)</div>
+                        <div class="product-card-price">
+                            <div class="product-card-current-price">$24.99</div>
                         </div>
-                        <div class="faq-item">
-                            <h4>How should I clean this helmet?</h4>
-                            <p>Clean the helmet with mild soap and warm water. Avoid using solvents, abrasives, or harsh chemicals as these can damage the shell and reduce the helmet's protective properties. Allow to air dry naturally away from direct heat sources.</p>
+                        <div class="product-card-actions">
+                            <button class="quick-add-btn">Add to Cart</button>
+                            <button class="quick-view-btn">Quick View</button>
                         </div>
-                        <div class="faq-item">
-                            <h4>Do you offer bulk discounts?</h4>
-                            <p>Yes, we offer tiered pricing for bulk orders. Please contact our sales team at sales@Blannq.co.za or call 0860 123 456 for a customized quote based on your quantity requirements.</p>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-card-image">
+                        <img src="High Visibility Clothing.jpg" alt="Safety Vest">
+                        <div class="product-card-badge">POPULAR</div>
+                    </div>
+                    <div class="product-card-content">
+                        <a href="#" class="product-card-title">Hi-Vis Safety Vest V300</a>
+                        <div class="product-card-rating">★★★★★ (112)</div>
+                        <div class="product-card-price">
+                            <div class="product-card-current-price">$19.99</div>
+                            <div class="product-card-old-price">$29.99</div>
+                        </div>
+                        <div class="product-card-actions">
+                            <button class="quick-add-btn">Add to Cart</button>
+                            <button class="quick-view-btn">Quick View</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-card-image">
+                        <img src="Foot Protection.jpg" alt="Safety Boots">
+                    </div>
+                    <div class="product-card-content">
+                        <a href="#" class="product-card-title">Composite Toe Safety Boots B400</a>
+                        <div class="product-card-rating">★★★★☆ (74)</div>
+                        <div class="product-card-price">
+                            <div class="product-card-current-price">$129.99</div>
+                            <div class="product-card-old-price">$149.99</div>
+                        </div>
+                        <div class="product-card-actions">
+                            <button class="quick-add-btn">Add to Cart</button>
+                            <button class="quick-view-btn">Quick View</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
     
-        <!-- Related Products -->
-        <section class="related-products">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Related Products</h2>
-                    <p>You might also be interested in these quality safety products</p>
-                </div>
-                <div class="products-grid">
-                    <div class="product-card">
-                        <div class="product-card-image">
-                            <img src="High Visibility Clothing.jpg" alt="Premium Safety Vest">
-                            <div class="product-card-badge">NEW</div>
-                        </div>
-                        <div class="product-card-content">
-                            <a href="#" class="product-card-title">Premium Safety Vest V300</a>
-                            <div class="product-card-rating">★★★★★ (42)</div>
-                            <div class="product-card-price">
-                                <div class="product-card-current-price">R349.99</div>
-                                <div class="product-card-old-price">R399.99</div>
-                            </div>
-                            <div class="product-card-actions">
-                                <button class="quick-add-btn">Add to Cart</button>
-                                <button class="quick-view-btn">Quick View</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-card-image">
-                            <img src="Eye Protection1.jpg" alt="Safety Goggles">
-                        </div>
-                        <div class="product-card-content">
-                            <a href="#" class="product-card-title">Anti-Fog Safety Goggles G200</a>
-                            <div class="product-card-rating">★★★★☆ (78)</div>
-                            <div class="product-card-price">
-                                <div class="product-card-current-price">R249.99</div>
-                            </div>
-                            <div class="product-card-actions">
-                                <button class="quick-add-btn">Add to Cart</button>
-                                <button class="quick-view-btn">Quick View</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-card-image">
-                            <img src="Hand Protection.jpg" alt="Work Gloves">
-                            <div class="product-card-badge">BESTSELLER</div>
-                        </div>
-                        <div class="product-card-content">
-                            <a href="#" class="product-card-title">Heavy Duty Work Gloves GL100</a>
-                            <div class="product-card-rating">★★★★★ (156)</div>
-                            <div class="product-card-price">
-                                <div class="product-card-current-price">R179.99</div>
-                                <div class="product-card-old-price">R199.99</div>
-                            </div>
-                            <div class="product-card-actions">
-                                <button class="quick-add-btn">Add to Cart</button>
-                                <button class="quick-view-btn">Quick View</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-card-image">
-                            <img src="Foot Protection.jpg" alt="Safety Boots">
-                        </div>
-                        <div class="product-card-content">
-                            <a href="#" class="product-card-title">Steel Toe Safety Boots B450</a>
-                            <div class="product-card-rating">★★★★☆ (91)</div>
-                            <div class="product-card-price">
-                                <div class="product-card-current-price">R899.99</div>
-                                <div class="product-card-old-price">R999.99</div>
-                            </div>
-                            <div class="product-card-actions">
-                                <button class="quick-add-btn">Add to Cart</button>
-                                <button class="quick-view-btn">Quick View</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    
-        <!-- Footer -->
-        <footer>
+    <!-- Footer -->
+    <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
@@ -1467,76 +1607,93 @@
         </div>
     </footer>
     
-        <script>
-            // Tab functionality
-            const tabBtns = document.querySelectorAll('.tab-btn');
-            const tabContents = document.querySelectorAll('.tab-content');
-            
-            tabBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    // Remove active class from all buttons and contents
-                    tabBtns.forEach(btn => btn.classList.remove('active'));
-                    tabContents.forEach(content => content.classList.remove('active'));
-                    
-                    // Add active class to clicked button
-                    btn.classList.add('active');
-                    
-                    // Show corresponding content
-                    const tabId = `${btn.dataset.tab}-tab`;
-                    document.getElementById(tabId).classList.add('active');
-                });
+    <!-- Back to top button -->
+    <div class="back-to-top">↑</div>
+    
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+        
+        // Product gallery functionality
+        const mainImage = document.getElementById('main-product-image');
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        
+        thumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener('click', function() {
+                // Update main image
+                const imageUrl = this.getAttribute('data-image');
+                mainImage.src = imageUrl;
+                
+                // Update active thumbnail
+                thumbnails.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
             });
-            
-            // Thumbnail gallery functionality
-            const thumbnails = document.querySelectorAll('.thumbnail');
-            const mainImage = document.getElementById('main-product-image');
-            
-            thumbnails.forEach(thumbnail => {
-                thumbnail.addEventListener('click', () => {
-                    // Remove active class from all thumbnails
-                    thumbnails.forEach(t => t.classList.remove('active'));
-                    
-                    // Add active class to clicked thumbnail
-                    thumbnail.classList.add('active');
-                    
-                    // Update main image (in a real site, we would change the src)
-                    // Here we're just simulating the change since we're using placeholder images
-                    const newSrc = thumbnail.querySelector('img').src;
-                    mainImage.src = newSrc.replace('80/80', '600/600');
-                });
+        });
+        
+        // Quantity changer
+        const quantityInput = document.querySelector('.quantity-value');
+        const minusBtn = document.querySelector('.quantity-btn.minus');
+        const plusBtn = document.querySelector('.quantity-btn.plus');
+        
+        minusBtn.addEventListener('click', function() {
+            let value = parseInt(quantityInput.value);
+            if (value > 1) {
+                quantityInput.value = value - 1;
+            }
+        });
+        
+        plusBtn.addEventListener('click', function() {
+            let value = parseInt(quantityInput.value);
+            quantityInput.value = value + 1;
+        });
+        
+        // Color selector
+        const colorOptions = document.querySelectorAll('.color-option');
+        
+        colorOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                colorOptions.forEach(o => o.classList.remove('active'));
+                this.classList.add('active');
             });
-            
-            // Quantity buttons functionality
-            const minusBtn = document.querySelector('.quantity-btn.minus');
-            const plusBtn = document.querySelector('.quantity-btn.plus');
-            const quantityInput = document.querySelector('.quantity-value');
-            
-            minusBtn.addEventListener('click', () => {
-                const currentValue = parseInt(quantityInput.value);
-                if (currentValue > 1) {
-                    quantityInput.value = currentValue - 1;
-                }
+        });
+        
+        // Tab switcher
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const tabId = this.getAttribute('data-tab');
+                
+                // Update active button
+                tabBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show active tab content
+                tabContents.forEach(content => content.classList.remove('active'));
+                document.getElementById(tabId).classList.add('active');
             });
-            
-            plusBtn.addEventListener('click', () => {
-                const currentValue = parseInt(quantityInput.value);
-                quantityInput.value = currentValue + 1;
+        });
+        
+        // Back to top button
+        const backToTopBtn = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
-            
-            // Color options functionality
-            const colorOptions = document.querySelectorAll('.color-option');
-            
-            colorOptions.forEach(option => {
-                option.addEventListener('click', () => {
-                    // Remove active class from all options
-                    colorOptions.forEach(o => o.classList.remove('active'));
-                    
-                    // Add active class to clicked option
-                    option.classList.add('active');
-                    
-                    // In a real site, we'd update product info/images based on color selection
-                });
-            });
-        </script>
-    </body>
-    </html>
+        });
+    </script>
+</body>
+</html>
